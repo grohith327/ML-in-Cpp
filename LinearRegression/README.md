@@ -10,9 +10,15 @@ export LD_LIBRARY_PATH="/usr/local/lib/:$LD_LIBRARY_PATH"
 clang++ -L/usr/local/lib -l mlpack -l armadillo -l boost_serialization -l boost_program_options -I/usr/local/include Linear_Regression.cpp
 ```
 ### Run: </br>
-The program takes two command line arguments, `features.csv` and `responses.csv`
+The program takes three command line arguments </br>
+* Mandatory:</br>
+    * `features.csv` - input features
+    * `responses.csv` - predictors
+* Optional:
+    * `lambda` - regularisation parameter for ridge regression
+
 ```
-./a.out <features.csv> <responses.csv>
+./a.out <features.csv> <responses.csv> 0.1
 ```
 
 #### Note: </br>

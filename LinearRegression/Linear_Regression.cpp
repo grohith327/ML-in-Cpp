@@ -56,10 +56,30 @@ int main(int argc,  char **argv)
     cout<<"Training data shape "<<arma::size(train_data)<<", Training responses size "<<train_resp.size()<<endl;
     cout<<"Testing data shape "<<arma::size(test_data)<<", Testing responses size "<<test_resp.size()<<endl;
 
-    LinearRegression model(train_data, train_resp);
     rowvec predictions;
-    model.Predict(test_data, predictions);
+
+    try
+    {
+        if(argv[3] == NULL)
+        {
+            LinearRegression model(train_data, train_resp);
+            model.Predict(test_data, predictions);
+            throw predictions;
+        }
+        else
+        {
+            double lambda = *argv[3];
+            LinearRegression model(train_data, train_resp, lambda);
+            model.Predict(test_data, predictions);
+            throw predictions;
+        }
+    }
     
-    cout<<"MSE Error: "<<MSE(test_resp, predictions)<<endl;
+    
+    catch (rowvec predictions)
+    {
+        cout<<"MSE Error: "<<MSE(test_resp, predictions)<<endl;
+    }
+    
     return 0;
 }
