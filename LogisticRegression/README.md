@@ -20,4 +20,4 @@ The program takes two command line arguments </br>
 
 #### Note: </br>
 * The given data is split into training and testing with a ratio of 80/20. Accuracy Score is reported from test data. 
-* This can be used only for binary classification check Softmax Regression for multi-class classification
+* This can be used only for binary classification task, check Softmax Regression for multi-class classification

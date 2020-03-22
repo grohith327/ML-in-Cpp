@@ -4,3 +4,4 @@
 * [mlpack](https://www.mlpack.org/)
 ## Machine Learning Algorithms
 * [Linear Regeression](LinearRegression)
+* [Logistic Regression](LogisticRegression)
