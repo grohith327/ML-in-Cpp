@@ -58,28 +58,21 @@ int main(int argc,  char **argv)
 
     rowvec predictions;
 
-    try
+    if(argv[3] == NULL)
     {
-        if(argv[3] == NULL)
-        {
-            LinearRegression model(train_data, train_resp);
-            model.Predict(test_data, predictions);
-            throw predictions;
-        }
-        else
-        {
-            double lambda = *argv[3];
-            LinearRegression model(train_data, train_resp, lambda);
-            model.Predict(test_data, predictions);
-            throw predictions;
-        }
+        LinearRegression model(train_data, train_resp);
+        model.Predict(test_data, predictions);
+
+    }
+    else
+    {
+        double lambda = *argv[3];
+        LinearRegression model(train_data, train_resp, lambda);
+        model.Predict(test_data, predictions);
+        throw predictions;
     }
     
-    
-    catch (rowvec predictions)
-    {
-        cout<<"MSE Error: "<<MSE(test_resp, predictions)<<endl;
-    }
-    
+    cout<<"MSE Error: "<<MSE(test_resp, predictions)<<endl;
+
     return 0;
 }
