@@ -5,3 +5,4 @@
 ## Machine Learning Algorithms
 * [Linear Regeression](LinearRegression)
 * [Logistic Regression](LogisticRegression)
+* [Softmax Regression](SoftmaxRegression)

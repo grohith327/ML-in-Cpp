@@ -1,5 +1,5 @@
-# Logistic Regression
-A C++ program that performs a simple logisitc regression and returns the accuracy </br>
+# Softmax Regression
+A C++ program that performs a simple Softmax regression(multi-class classification) and returns the accuracy </br>
 ### Ensure the path for mlpack has been set: </br>
 By default mlpack is installed to `/usr/local/`, if you have installed somewhere specify that path. 
 ```
@@ -7,7 +7,7 @@ export LD_LIBRARY_PATH="/usr/local/lib/:$LD_LIBRARY_PATH"
 ```
 ### Compile Program with the following command: </br>
 ```
-clang++ -L/usr/local/lib -l mlpack -l armadillo -l boost_serialization -l boost_program_options -I/usr/local/include Logistic_Regression.cpp
+clang++ -L/usr/local/lib -l mlpack -l armadillo -l boost_serialization -l boost_program_options -I/usr/local/include Softmax_Regression.cpp
 ```
 ### Run: </br>
 The program takes two command line arguments </br>
@@ -20,4 +20,4 @@ The program takes two command line arguments </br>
 
 #### Note: </br>
 * The given data is split into training and testing with a ratio of 80/20. Accuracy Score is reported from test data. 
-* This can be used only for binary classification task, check [Softmax Regression](/SoftmaxRegression) for multi-class classification
+* To perform binary classification check [Logistic Regression](/LogisticRegression)
