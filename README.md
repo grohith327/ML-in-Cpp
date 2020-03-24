@@ -6,3 +6,4 @@
 * [Linear Regeression](LinearRegression)
 * [Logistic Regression](LogisticRegression)
 * [Softmax Regression](SoftmaxRegression)
+* [Support Vector Machine](SVM_Classification)
