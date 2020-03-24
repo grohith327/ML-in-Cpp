@@ -46,7 +46,6 @@ float accuracy(arma::Row<size_t> true_labels, arma::Row<size_t> predictions)
 
 int main(int argc, char** argv)
 {
-    arma::Row<size_t> temp(10, arma::fill::zeros);
 
     arma::mat data;
     arma::Row<size_t> responses;
@@ -55,7 +54,6 @@ int main(int argc, char** argv)
     data::Load(argv[2], responses, true);
 
     const size_t numClasses = arma::size(arma::unique(responses))(1);
-    cout<<"Unique elements: "<<numClasses<<endl;
 
     float train_size = 0.8;
     int train_ex = int(train_size * arma::size(data)[0]);
