@@ -7,3 +7,4 @@
 * [Logistic Regression](LogisticRegression)
 * [Softmax Regression](SoftmaxRegression)
 * [Support Vector Machine](SVM_Classification)
+* [KMeans Clustering](KMeans)
