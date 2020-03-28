@@ -58,6 +58,9 @@ int main(int argc,  char **argv)
 
     rowvec predictions;
 
+    train_data = train_data.t();
+    test_data = test_data.t();
+
     if(argv[3] == NULL)
     {
         LinearRegression model(train_data, train_resp);
