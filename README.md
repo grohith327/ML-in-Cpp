@@ -11,3 +11,4 @@
 * [AdaBoost](AdaBoost)
 * [Feed Forward Network - Classification](FFN_Classification)
 * [Feed Forward Network - Regression](FFN_Regression)
+* [Decision Tree](DecisionTree)
