@@ -9,4 +9,5 @@
 * [Support Vector Machine](SVM_Classification)
 * [KMeans Clustering](KMeans)
 * [AdaBoost](AdaBoost)
-* [Feed Forward Network](Feed_Forward_NN)
+* [Feed Forward Network - Classification](FFN_Classification)
+* [Feed Forward Network - Regression](FFN_Regression)

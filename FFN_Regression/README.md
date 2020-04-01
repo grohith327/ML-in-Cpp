@@ -1,5 +1,5 @@
-# Feed Forward Neural Network
-A C++ program that performs classification using a Feed Forward Neural Network and returns the accuracy of the model</br>
+# Feed Forward Neural Network - Regression
+A C++ program that performs Regression using a Feed Forward Neural Network and returns the Mean Squared Error of the model</br>
 ### Ensure the path for mlpack has been set: </br>
 By default mlpack is installed to `/usr/local/`, if you have installed somewhere specify that path. 
 ```
@@ -19,5 +19,5 @@ The program takes two command line arguments </br>
 ```
 
 #### Note: </br>
-* The given data is split into training and testing with a ratio of 80/20. Accuracy Score is reported from test data.
-* Model is trained using a standard Gradient Descent optimizer and a log likelihood loss function
+* The given data is split into training and testing with a ratio of 80/20. MSE is reported from test data.
+* Model is trained using a standard Gradient Descent optimizer and a MSE loss function
