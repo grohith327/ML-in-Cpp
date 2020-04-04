@@ -13,3 +13,4 @@
 * [Feed Forward Network - Regression](FFN_Regression)
 * [Decision Tree](DecisionTree)
 * [Random Forest](RandomForest)
+* [Convolutional Neural Network](Convolutional_Neural_Networks)
