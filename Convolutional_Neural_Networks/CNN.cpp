@@ -43,7 +43,8 @@ arma::Row<size_t> getLabels(arma::mat& predOut)
 int main(int argc, char** argv)
 {
     arma::mat data;
-    size_t EPOCHS = stoi(argv[2]);
+    const int EPOCHS = stoi(argv[2]);
+    const int BATCH_SIZE = 32;
 
     data::Load(argv[1], data, true);
     data = data.submat(0, 0, data.n_rows - 1, 100);
@@ -78,26 +79,22 @@ int main(int argc, char** argv)
     model.Add<Linear<> >(7*7*64, 10);
     model.Add<LogSoftMax<> >();
 
-    ens::StandardSGD optimizer;
+    ens::StandardSGD optimizer(5e-5, BATCH_SIZE, train_data.n_cols*EPOCHS);
 
-    for(size_t i = 0;i < EPOCHS;i++)
-    {
-        model.Train(trainX, trainY, std::move(optimizer));
-        optimizer.ResetPolicy() = false;
+    model.Train(trainX, trainY, optimizer, ens::PrintLoss());
 
-        arma::mat train_predictions, test_predictions;
-        arma::Row<size_t> train_predLabels, test_predLabels;
+    arma::mat train_predictions, test_predictions;
+    arma::Row<size_t> train_predLabels, test_predLabels;
+    
+    model.Predict(trainX, train_predictions);
+    train_predLabels = getLabels(train_predictions);
+    float train_acc = accuracy(trainY.t(), train_predLabels);
 
-        model.Predict(trainX, train_predictions);
-        train_predLabels = getLabels(train_predictions);
-        float train_acc = accuracy(trainY.t(), train_predLabels);
+    model.Predict(testX, test_predictions);
+    test_predLabels = getLabels(test_predictions);
+    float test_acc = accuracy(testY.t(), test_predLabels);
 
-        model.Predict(testX, test_predictions);
-        test_predLabels = getLabels(test_predictions);
-        float test_acc = accuracy(testY.t(), test_predLabels);
-
-        cout<<"Epoch:"<<i+1<<", Train accuracy:"<<train_acc<<", Test accuracy:"<<test_acc<<endl;
-    }
+    cout<<"Train accuracy:"<<train_acc<<", Test accuracy:"<<test_acc<<endl;
 
     return 0;
 }
