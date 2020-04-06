@@ -66,6 +66,8 @@ int main(int argc, char** argv)
 
     int width = stoi(argv[3]);
     int height = stoi(argv[4]);
+
+    size_t numClasses = arma::size(arma::unique(trainY))(1);
     
     FFN<> model;
     model.Add<Convolution<> >(1, 16, 5, 5, 1, 1, 2, 2, width, height);
@@ -76,7 +78,7 @@ int main(int argc, char** argv)
     model.Add<MaxPooling<> >(2, 2, 2, 2, true);
     model.Add<Convolution<> >(32, 64, 5, 5, 1, 1, 2, 2, width / 4, height / 4);
     model.Add<ReLULayer<> >();
-    model.Add<Linear<> >(7*7*64, 10);
+    model.Add<Linear<> >(7*7*64, numClasses);
     model.Add<LogSoftMax<> >();
 
     ens::StandardSGD optimizer(5e-5, BATCH_SIZE, train_data.n_cols*EPOCHS);
